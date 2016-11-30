@@ -1,4 +1,4 @@
-/* This is a tictactoe game - players 'X' and 'O' should put their number on the command line using 1 - 9
+/* This is a tictactoe game - players 'x' and 'o' should put their number on the command line using 1 - 9
 1 | 2 | 3
 ---------
 4 | 5 | 6
@@ -35,7 +35,7 @@ var winningCombinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [3, 5, 7]
 
 //placing your number on the board for where you want the space to be
 function markBoard(position, mark) {
-    gameBoard[position] = mark.toUpperCase();
+    gameBoard[position] = mark;
 }
 
 //validating that it was in fact a move
@@ -73,6 +73,9 @@ function checkDraw() {
 function yourTurn(player) {
 
     console.log('Your turn player: ' + player);
+    //Here I need something to get each of the players turns then check the move that it's valid,
+    // check if ti's a win, draw or tell the nextp layer to go
+    //Need to figure out where you put the prompt for the next one so that it runs
     var position = prompt("what position are you picking?");
         if (checkMove(position) === true) {
             markBoard(position, player);
@@ -85,10 +88,10 @@ function yourTurn(player) {
                 console.log('It is a tie!');
                 return;
             }
-            if (player === 'X') {
-                yourTurn('O');
+            if (player === 'x') {
+                yourTurn('o');
             } else {
-                yourTurn('X');
+                yourTurn('x');
             }
         } else {
             console.log('please try again');
@@ -100,5 +103,5 @@ function yourTurn(player) {
 //This will let you know that your game is starting!
 console.log('Game is starting YAY!!!!');
 
-yourTurn('X');
+yourTurn('x');
 
