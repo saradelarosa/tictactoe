@@ -1,10 +1,5 @@
-/* This is a tictactoe game - players 'x' and 'o' should put their number on the command line using 1 - 9
-1 | 2 | 3
----------
-4 | 5 | 6
----------
-7 | 8 | 9
-*/
+//This will install with npm install and you need to have the user prompted to play
+var prompt = require('prompt');
 
 //This makes the gameboard with nothing in the squares
 var gameBoard = {
@@ -22,11 +17,9 @@ var gameBoard = {
 ///This will end up being the current game board
 function currentGame() {
     console.log('\n' +
-        ' ' + gameBoard[1] + ' || ' + gameBoard[2] + ' || ' + gameBoard[3] + '\n' +
-        ' ~~~~~~~~~/n' +
-        ' ' + gameBoard[4] + ' || ' + gameBoard[5] + ' || ' + gameBoard[6] + '\n' +
-        ' ~~~~~~~~~/n' +
-        ' ' + gameBoard[7] + ' || ' + gameBoard[8] + ' || ' + gameBoard[9] + '\n');
+        ' ' + gameBoard[1] + ' | ' + gameBoard[2] + ' | ' + gameBoard[3] + '\n' +
+        ' ' + gameBoard[4] + ' | ' + gameBoard[5] + ' | ' + gameBoard[6] + '\n' +
+        ' ' + gameBoard[7] + ' | ' + gameBoard[8] + ' | ' + gameBoard[9] + '\n');
 }
 
 //This is a mix of the winning combinations that are possible on the game board
@@ -73,19 +66,18 @@ function checkDraw() {
 function yourTurn(player) {
 
     console.log('Your turn player: ' + player);
-    //Here I need something to get each of the players turns then check the move that it's valid,
-    // check if ti's a win, draw or tell the nextp layer to go
-    //Need to figure out where you put the prompt for the next one so that it runs
-    var position = prompt("what position are you picking?");
-        if (checkMove(position) === true) {
-            markBoard(position, player);
+    prompt.start();
+    prompt.get(['position'], function (err, result) {
+
+        if (checkMove(result.position) === true) {
+            markBoard(result.position, player);
             currentGame();
             if (checkWin(player) === true) {
-                console.log('You won!');
+                console.log('You win wahooo!');
                 return;
             }
             if (checkDraw() === true) {
-                console.log('It is a tie!');
+                console.log('The game is tied');
                 return;
             }
             if (player === 'x') {
@@ -94,10 +86,10 @@ function yourTurn(player) {
                 yourTurn('x');
             }
         } else {
-            console.log('please try again');
+            console.log('Please try again');
             yourTurn(player);
         }
-
+    });
 }
 
 //This will let you know that your game is starting!
