@@ -7,6 +7,10 @@
 */
 
 
+//I am using an npm module prompt to prompt the user for input
+// it will save when you run npm install
+
+var prompt = require('prompt');
 
 var gameBoard = {
     1: ' ',
