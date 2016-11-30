@@ -1,4 +1,4 @@
-/* This is a tictactoe game - players 'X' and 'O' should put their number on the command line using a - i
+/* This is a tictactoe game - players 'X' and 'O' should put their number on the command line using 1 - 9
 1 | 2 | 3
 ---------
 4 | 5 | 6
