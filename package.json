@@ -16,7 +16,4 @@
     "url": "https://github.com/saradelarosa/tictactoe/issues"
   },
   "homepage": "https://github.com/saradelarosa/tictactoe#readme",
-  "dependencies": {
-    "prompt": "^1.0.0"
-  }
 }
